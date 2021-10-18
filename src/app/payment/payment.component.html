@@ -1,0 +1,62 @@
+<mat-card>
+    <mat-card-title class="info-color white-text text-center py-4">
+        <h2>
+            <strong>Payment Details</strong>
+        </h2>
+    </mat-card-title>
+    <mat-card-content class="px-lg-5 pt-0" style="color: black;">
+        <form class="example-formtext-center" style="color: #757575;" #PaymentForm="ngForm" (ngSubmit)= "Payment(PaymentForm.value)">
+            <div class="row">
+                <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label for="name">Name</mat-label>
+                    <input class="text-white" type="text" matInput placeholder="Name" [(ngModel)]="user.name" name="Name" autocomplete="off" #Name='ngModel' required >
+                </mat-form-field>
+                <div *ngIf="Name.invalid && (Name.dirty || Name.touched)" class="error" style="padding-bottom: 15px;">
+                    <div *ngIf = "Name.errors?.required" style="color: red;">Name is Required</div>
+                </div>
+            </div>
+            <div class="row">
+                <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label for="debit">Debit Card Number</mat-label>
+                    <input class="text-white" type="text" matInput placeholder="Debit Card Number" [(ngModel)]="user.debit" name="Debit" autocomplete="off" #Debit='ngModel' required>
+                </mat-form-field>
+                <div *ngIf="Debit.invalid && (Debit.dirty || Debit.touched)" class="error" style="padding-bottom: 15px;">
+                    <div *ngIf = "Debit.errors?.required" style="color: red;">Enter Debit Card Number</div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label for="cvv">CVV</mat-label>
+                        <input class="text-white" type="text" matInput placeholder="CVV Number" [(ngModel)]="user.cvv" name="cvv" #Cvv='ngModel' autocomplete="off" required minlength="3" maxlength="3">
+                    </mat-form-field>
+                    <div *ngIf="Cvv.invalid && (Cvv.dirty || Cvv.touched)" class="error" style="padding-bottom: 15px;">
+                        <div *ngIf = "Cvv.errors?.required" style="color: red;">Enter CVV Number</div>
+                        <div *ngIf = "Cvv.errors?.minlength" style="color: red;">Invalid CVV Number</div>
+                        <div *ngIf = "Cvv.errors?.maxlength" style="color: red;">Invalid CVV Number</div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label for="expiry">Expiry Year</mat-label>
+                        <input class="text-white" type="text" matInput placeholder="Expiry Year" [(ngModel)] = "user.expiry" name="Expiry" #Expiry='ngModel' required autocomplete="off" minlength="4" maxlength="4">
+                    </mat-form-field>
+                    <div *ngIf="Expiry.invalid && (Expiry.dirty || Expiry.touched)" class="error" style="padding-bottom: 15px;">
+                        <div *ngIf = "Expiry.errors?.required" style="color: red;">Enter Expiry Year</div>
+                        <div *ngIf = "Expiry.errors?.minlength" style="color: red;">Invalid Year</div>
+                        <div *ngIf = "Expiry.errors?.maxlength" style="color: red;">Invalid Year</div>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-md-6">
+                    <button type="submit" class="btn btn-secondary" routerLink = "/courselist">Back</button> 
+                </div>
+                <div class="col-md-6">
+                    <button type="submit" class="btn btn-secondary" [disabled] = "!PaymentForm.form.valid">Conform</button>
+                </div>
+            </div>
+        </form>
+    </mat-card-content>
+</mat-card>

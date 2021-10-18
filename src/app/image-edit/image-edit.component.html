@@ -1,0 +1,23 @@
+<mat-card style="width: 510px;">
+    <mat-card-title class="info-color white-text text-center py-4">
+        <h2>
+            <strong>Profile Image</strong>
+        </h2>
+    </mat-card-title>
+    <mat-card-content class="px-lg-5 pt-0" style="color: black;">
+        <form class="example-formtext-center" style="color: #757575;" #ImageEditForm="ngForm" (ngSubmit)="EditImage($event)">
+            <div class="row">
+                <div class="form-group">
+                    <label for=userImage style="color: wheat;">Choose Image</label>&nbsp;&nbsp;
+                    <input #ImageBar class="form-control" type="file" #UserImage='ngModel' name="ImageBar" [(ngModel)]="selectFile" style="width: 300px;" (change)="onselectFile($event)" required>
+                </div>&nbsp;&nbsp;
+                <div *ngIf="UserImage.invalid && (UserImage.dirty || UserImage.touched)" class="error" style="padding-bottom: 15px;">
+                    <div *ngIf = "UserImage.errors?.required" style="color: red;">Image is Required</div>
+                  </div>
+            </div>&nbsp;&nbsp;
+            <div class="d-grid gap-2 col-6 mx-auto">
+                <button type="submit" (click)="EditImage(ImageBar.value)" class="btn btn-primary" [disabled] = "!ImageEditForm.form.valid">Save Changes</button>
+            </div><br>
+        </form>
+    </mat-card-content>
+</mat-card>

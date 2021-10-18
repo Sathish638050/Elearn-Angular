@@ -1,0 +1,46 @@
+<div style="color: black;">
+    <h1 *ngIf="isStudent">Student List</h1>
+    <h1 *ngIf="isStaff">Staff List</h1>
+    <h1 *ngIf="isNewStaff">New Staff Request</h1>
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        <div *ngIf = "isStudent || isStaff">
+            <div *ngFor="let item of userlist">
+                <div class="col" style="width: 300px; padding-bottom: 10px;">
+                    <div class="card">
+                        <img src="../../assets/images/{{item.userImage}}" class="card-img-top">
+                        <div class="card-body">
+                            <h3 class="card-title">{{item.firstName}} {{item.lastName}}</h3>
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">Email : {{item.email}}</li>
+                            <li class="list-group-item">Phone : {{item.phone}}</li>
+                        </ul> 
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div *ngIf="isNewStaff">
+            <div *ngFor="let item of newreq">
+                <div class="col" style="width: 300px; padding-bottom: 10px;">
+                    <div class="card">
+                        <img src="../../assets/images/{{item.userImage}}" class="card-img-top">
+                        <div class="card-body">
+                            <h3 class="card-title">{{item.name}}</h3>
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">Email : {{item.email}}</li>
+                            <li class="list-group-item">Phone : {{item.phone}}</li>
+                            <li class="list-group-item">Higher Education : {{item.high}}</li>
+                            <li class="list-group-item">Department : {{item.department}}</li>
+                            <li class="list-group-item">College : {{item.college}}</li>
+                            <li class="list-group-item">Experience : {{item.experience}}</li>
+                        </ul> 
+                        <div class="card-body">
+                            <button class="btn btn-primary" (click)="Accept(item)">Accept</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

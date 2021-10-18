@@ -1,0 +1,43 @@
+<mat-card>
+    <mat-card-title class="info-color white-text text-center py-4">
+        <h2>
+            <strong>Add Topic</strong>
+        </h2>
+    </mat-card-title>
+    <mat-card-content class="px-lg-5 pt-0" style="color: black;">
+        <form class="example-form text-center" style="color:#757575;" #TopicForm = "ngForm" (ngSubmit) = AddTopic(TopicForm.value)>
+            <div class="row">
+                <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label for="topicName">Topic Name</mat-label>
+                    <input type="text" matInput placeholder="Topic Name" [(ngModel)] = "topic.topicName" name="TopicName" #TopicName='ngModel' autocomplete="off" required style="color: white;">    
+                </mat-form-field>
+            </div>
+            <div class="row">
+                <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label for="topicDesc">Topic Description</mat-label>
+                    <input style="color: white;" type="text" matInput placeholder="TopicDesc" [(ngModel)] = "topic.topicDesc" name="TopicDesc" #TopicDesc='ngModel' autocomplete="off" required>    
+                </mat-form-field>
+            </div>
+            <div class="row">
+                <div class="form-group" style="padding-bottom:15px;">
+                    <label for="materialPath" style="padding-right: 270px; color: white;">Material</label>
+                    <input class="form-control" type="file" [(ngModel)]='topic.materialPath' name="MaterialPath" #MaterialPath='ngModel' required (change)="onselectMaterial($event)" >
+                </div> 
+            </div>
+            <div class="row">
+                <div class="form-group" style="padding-bottom:15px;">
+                    <label for="videoPath" style="padding-right: 270px; color: white;">Video</label> 
+                    <input class="form-control" type="file" [(ngModel)]='topic.videoPath' name="VideoPath" #VideoPath='ngModel' required (change)="onselectVideo($event)">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <a  class="btn btn-secondary" routerLink="/mycourse-list">Back</a>
+                </div>
+                <div class="col-md-6">
+                    <button type="submit" class="btn btn-primary">Add Topic</button>
+                </div>
+            </div>
+        </form>
+    </mat-card-content>
+</mat-card>

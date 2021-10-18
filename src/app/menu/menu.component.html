@@ -1,0 +1,138 @@
+<mat-toolbar>
+    <mat-toolbar-row>
+        <span>EazyLearn</span>  
+        <span class="example-spacer"></span>
+        <div *ngIf = "isLogging == false">
+            <button routerLink="/login" mat-icon-button class="example-icon login-icon" aria-label="login">
+                <mat-icon>login</mat-icon>
+            </button>
+        </div>
+        <div *ngIf = "isLogging == true">
+            <button class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                <img [src]="MenuImage" class="rounded-circle" width="30" height="30">
+            </button>
+            <ul class="dropdown-menu">
+                <li>
+                    <a class="dropdown-item" (click)="Logout()">Logout</a>
+                </li>
+            </ul>
+        </div>
+    </mat-toolbar-row>
+</mat-toolbar>
+<mat-sidenav-container style="background-color: white;">
+    <mat-sidenav mode="side" opened>
+        <div *ngIf="!isLogging">
+            <div>
+                <button mat-button class="menu-button" routerLink = "/" routerLinkActive="active" [routerLinkActiveOptions]={exact:true}>
+                    <mat-icon>home</mat-icon>
+                    <span>Home</span>
+                </button>
+            </div>
+            <div>
+                <button mat-button class="menu-button" routerLink="courselist" routerLinkActive="active" [routerLinkActiveOptions]={exact:true}>
+                    <mat-icon>book</mat-icon>
+                    <span>Courses</span>
+                </button>
+            </div>
+            <div>
+                <button mat-button class="menu-button" routerLink="about" routerLinkActive="active" [routerLinkActiveOptions] = {exact:true}>
+                    <mat-icon>info</mat-icon>
+                    <span>About</span>  
+                </button>
+            </div>
+            <div>
+                <button mat-button class="menu-button" routerLink="newstaff-req" routerLinkActive = "active" [routerLinkActiveOptions] = {exact:true}>
+                    <mat-icon>person_add</mat-icon>
+                    <span>New  Staff Request</span>  
+                </button>
+            </div>
+            <div>
+                <button mat-button class="menu-button" routerLink="/contact" routerLinkActive="active" [routerLinkActiveOptions]={exact:true}>
+                    <mat-icon>contacts</mat-icon>
+                    <span>Contact</span>  
+                </button>
+            </div>
+        </div>
+        <div *ngIf="isLogging && (isStudent || isStaff) ">
+            <div>
+                <button mat-button class="menu-button" routerLink = "/" routerLinkActive="active" [routerLinkActiveOptions]={exact:true}>
+                    <mat-icon>home</mat-icon>
+                    <span>Home</span>
+                </button>
+            </div>
+            <div>
+                <button mat-button class="menu-button" [routerLink]="['/courselist']" routerLinkActive="active" [routerLinkActiveOptions]={exact:true}>
+                    <mat-icon>book</mat-icon>
+                    <span>Courses</span>
+                </button>
+            </div>
+            <div>
+                <button mat-button class="menu-button" [routerLink]="['/mycourse-list']" routerLinkActive="active" [routerLinkActiveOptions]={exact:true}>
+                    <mat-icon>book</mat-icon>
+                    <span>My Courses</span>
+                </button>
+            </div>
+            <div *ngIf="isStaff">
+                <button mat-button class="menu-button" [routerLink]="['/add-course']" routerLinkActive="active" [routerLinkActiveOptions]={exact:true}>
+                    <mat-icon>add_box</mat-icon>
+                    <span>Add Course</span>
+                </button>
+            </div>
+            <div>
+                <button mat-button class="menu-button" [routerLink]="['/profile']" routerLinkActive="active" [routerLinkActiveOptions]={exact:true}> 
+                    <mat-icon>person</mat-icon>
+                    <span>Profile</span>
+                </button>
+            </div>
+            <div>
+                <button mat-button class="menu-button" routerLink="/contact" routerLinkActive="active" [routerLinkActiveOptions]={exact:true}>
+                    <mat-icon>contacts</mat-icon>
+                    <span>Contact</span>  
+                </button>
+            </div>
+        </div>
+        <div *ngIf="isLogging && isAdmin">
+            <div>
+                <button mat-button class="menu-button" routerLink = "/" routerLinkActive="active" [routerLinkActiveOptions]={exact:true}>
+                    <mat-icon>home</mat-icon>
+                    <span>Home</span>
+                </button>
+            </div>
+            <div>
+                <button mat-button class="menu-button" [routerLink]="['/courselist']" routerLinkActive="active" [routerLinkActiveOptions]={exact:true}>
+                    <mat-icon>book</mat-icon>
+                    <span>Courses</span>
+                </button>
+            </div>
+            <div>
+                <button mat-button class="menu-button" routerLink = "/student-list" routerLinkActive="active" [routerLinkActiveOptions]={exact:true}>
+                    <mat-icon>format_list_bulleted</mat-icon>
+                    <span>Student List</span>
+                </button>
+            </div>
+            <div>
+                <button mat-button class="menu-button" routerLink = "/staff-list" routerLinkActive="active" [routerLinkActiveOptions]={exact:true}>
+                    <mat-icon>format_list_bulleted</mat-icon>
+                    <span>Staff List</span>
+                </button>
+            </div>
+            <div>
+                <button mat-button class="menu-button" routerLink = "/newstaff-list" routerLinkActive="active" [routerLinkActiveOptions]={exact:true}>
+                    <mat-icon>accessibility_new</mat-icon>
+                    <span>New Request</span>
+                </button>
+            </div>
+            <div>
+                <button mat-button class="menu-button" routerLink="/contact-list" routerLinkActive="active" [routerLinkActiveOptions]={exact:true}>
+                    <mat-icon>view_list</mat-icon>
+                    <span>Contact List</span>  
+                </button>
+            </div>
+        </div>
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <div class="content mat-elevation-z8">
+            <router-outlet></router-outlet>
+        </div>
+    </mat-sidenav-content>
+</mat-sidenav-container>

@@ -1,0 +1,56 @@
+<div class="row" style="color: black;">
+    <div class="col" style="padding: 30px;">
+        <div class="card">
+            <div class="card-body">
+                <div class="card-title">
+                    <h2 *ngIf="isStudent">Endrolled Course</h2>
+                    <h2 *ngIf="isStaff">Handled Course</h2>
+                </div>
+            </div>
+            <div>
+                <div class="card">
+                    <div *ngIf="!courseEmpty">
+                        <ul class="list-group list-group-flush">
+                            <div *ngFor="let item of course">
+                                <li class="list-group-item">{{item.courseName}}</li>
+                            </div>
+                        </ul> 
+                    </div>
+                    <div *ngIf="courseEmpty">
+                        <h3 *ngIf="isStudent">There are no course enroll</h3>
+                        <h3 *ngIf="isStaff">There no course handle</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="!classEmpty">
+        <div class="col">
+            <div class="card">
+                <div class="card-body">
+                    <div class="card-title">
+                        <h2 *ngIf="isStudent">Your Today Class</h2>
+                        <h2 *ngIf="isStaff">Today Handle Classes</h2>
+                    </div>
+                </div>
+               <div *ngFor="let cl of class;let i = index" style="padding: 5px;">
+                   <div class="card">
+                       <div *ngIf="!classEmpty">
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">Course Name : {{course[i].courseName}}</li>
+                                <li class="list-group-item">Time : {{cl.startTime}} To {{cl.endTime}}</li>
+                                <li class="list-group-item">
+                                    <a href="{{cl.clink}}" target="_blank" class="btn btn-primary">Join</a>
+                                </li>
+                            </ul> 
+                       </div>
+                       <div *ngIf="classEmpty">
+                           <h3 *ngIf="isStudent" style="color: black;">There no classes Today</h3>
+                           <h3 *ngIf="isStaff" style="color: black;">There are no handle class todays</h3>
+                       </div>
+                   </div>
+               </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,47 @@
+<mat-card>
+    <mat-card-title class="info-color white-text text-center py-4">
+        <h2>
+            <strong>Edit Detail Form</strong>
+        </h2>
+    </mat-card-title>
+    <mat-card-content class="px-lg-5 pt-0" style="color: black;">
+        <form class="example-formtext-center" style="color:#757575;" #EditForm = "ngForm" (ngSubmit) = EditDetail(EditForm.value)>
+            <div class="row">
+                <div class="col-md-6">
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label for="firstName">First Name</mat-label>
+                        <input type="text" matInput placeholder="FirstName" [(ngModel)] = "user.firstName" name="FirstName" #FirstName='ngModel' autocomplete="off" value={{user.firstName}} required style="color: white;">    
+                    </mat-form-field>
+                </div>
+                <div class="col-md-6">
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label for="lastName">Last Name</mat-label>
+                        <input style="color: white;" type="text" matInput placeholder="LastName" [(ngModel)] = "user.lastName" name="LastName" #LastName='ngModel' autocomplete="off" value={{user.lastName}} required>    
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label for="email">Email</mat-label>
+                        <input style="color: white;" type="text" matInput placeholder="Email" [(ngModel)] = "user.email" name="Email" #Email='ngModel' autocomplete="off" value={{user.email}} required>    
+                    </mat-form-field>
+                </div>
+                <div class="col-md-6">
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label for="phone">Phone</mat-label>
+                        <input style="color: white;" type="text" matInput placeholder="Phone" [(ngModel)] = "user.phone" name="Phone" #Phone='ngModel' autocomplete="off" value={{user.lastName}} required>    
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <button type="button" (click) = "CloseModal()" class="btn btn-secondary">Back</button>
+                </div>
+                <div class="col-md-6">
+                    <button type="submit" class="btn btn-primary">Save Changes</button>
+                </div>
+            </div>
+        </form>
+    </mat-card-content>
+</mat-card>

@@ -1,0 +1,36 @@
+<mat-card style="width: 510px;">
+    <mat-card-title class="info-color white-text text-center py-4">
+        <h2>
+            <strong>Sign in</strong>
+        </h2>
+    </mat-card-title>
+    <mat-card-content class="px-lg-5 pt-0" style="color: black;">
+        <form class="example-formtext-center" style="color: #757575;" #LoginForm="ngForm" (ngSubmit)= "login(LoginForm.value)">
+            <div class="row">
+                <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label for="Username">Username</mat-label>
+                    <input type="text" matInput placeholder="Username" [(ngModel)] = "user.Username" name="Username" autocomplete="off" #Username='ngModel' required >
+                  </mat-form-field>
+                  <div *ngIf="Username.invalid && (Username.dirty || Username.touched)" class="error">
+                      <div *ngIf = "Username.errors?.required" style="color: red;">Username is Required</div>
+                  </div>
+            </div><br>
+            <div class="row">
+                <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label for="Password">Password</mat-label>
+                    <input type="password" matInput placeholder="Password" [(ngModel)] = "user.Password" name="Password" autocomplete="off" #Password='ngModel' required>
+                </mat-form-field>
+                <div *ngIf="Password.invalid && (Password.dirty || Password.touched)" class="error">
+                    <div *ngIf = "Password.errors?.required" style="color: red;">Password is Required</div>
+                </div>
+            </div><br>
+            <div *ngIf="serverError" style="color: red;">
+                Invalid Username and Password
+            </div><br>
+            <div class="d-grid gap-2 col-6 mx-auto">
+                <button type="submit" class="btn btn-primary" [disabled] = "!LoginForm.form.valid"> Login</button>
+            </div><br>
+            <p style="color: white;">Not a member? <a routerLink="/register">Register</a></p>
+        </form>
+    </mat-card-content>
+</mat-card>

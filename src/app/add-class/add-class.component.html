@@ -1,0 +1,44 @@
+<mat-card>
+    <mat-card-title class="info-color white-text text-center py-4">
+        <h2>
+            <strong>Add Topic</strong>
+        </h2>
+    </mat-card-title>
+    <mat-card-content class="px-lg-5 pt-0" style="color: black;">
+        <form class="example-form text-center" style="color:#757575;" #AddClassForm = "ngForm" (ngSubmit) = AddClass(AddClassForm.value)>
+            <div class="row">
+                <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label for="startTime">Start Time</mat-label>
+                    <input type="time" matInput placeholder="StartTime" [(ngModel)] = "class.startTime" name="StartTime" #StartTime='ngModel' autocomplete="off" required style="color: white;">    
+                </mat-form-field>
+            </div>
+            <div class="row">
+                <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label for="endTime">End Time</mat-label>
+                    <input style="color: white;" type="time" matInput placeholder="EndTime" [(ngModel)] = "class.endTime" name="EndTime" #EndTime='ngModel' autocomplete="off" required>    
+                </mat-form-field>
+            </div>
+            <div class="row">
+                <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label for="clink">Class Link</mat-label>
+                    <input style="color: white;" type="text" matInput placeholder="Class link" [(ngModel)] = "class.clink" name="ClassLink" #ClassLink='ngModel' autocomplete="off" required>    
+                </mat-form-field>
+            </div>
+            <div class="row">
+                <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label for="endTime">Class Date</mat-label>
+                    <input style="color: white;" type="date" matInput placeholder="ClassDate" [(ngModel)] = "class.classDate" name="ClassDate" #ClassDate='ngModel' autocomplete="off" required>    
+                </mat-form-field>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <a type="button" class="btn btn-secondary" routerLink="/mycourse-list">Back</a>
+                </div>
+                <div class="col-md-6">
+                    <button type="submit" class="btn btn-primary">Add Class</button>
+                </div>
+            </div>
+        </form>
+    </mat-card-content>
+</mat-card>

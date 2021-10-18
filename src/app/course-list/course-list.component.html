@@ -1,0 +1,48 @@
+<div style="color: black;">
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        <div *ngIf="emptyList">
+            <div *ngIf="isStudent" style="width: 320px;">
+                <h3>There are no course enrolled your account</h3>
+                <a class="btn btn-primary" routerLink="courselist">Enroll Now</a>
+            </div>
+            <div *ngIf="isStaff">
+                <h3>There are no courses added you</h3>
+                <a class="btn btn-primary" routerLink="add-course">Add Now</a>
+            </div>
+        </div>
+        <div *ngIf="!emptyList">
+            <div *ngFor="let item of courseList">
+                <div class="col" style="width: 300px;padding: 15px;">
+                    <div class="card">
+                        <img src= "../../assets/images/{{item.picture}}" class="card-img-top" height="200px" >
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                {{item.courseName}}
+                            </h5>
+                            <p class="card-text">
+                                {{item.description}}
+                            </p>
+                            <div *ngIf = "isCourse && isStudent">
+                                <a class="btn btn-primary" routerLink="/course-detail/+{{item.courseId}}" >Enroll</a>
+                            </div>
+                            <div *ngIf = "isCourse && (isStaff || isAdmin)">
+                                <a class="btn btn-primary" routerLink="/course-detail/+{{item.courseId}}" >View Details</a>
+                            </div>
+                            <div *ngIf = "!isStudent && !isStaff && !isAdmin">
+                                <a class="btn btn-primary" routerLink="/course-detail/+{{item.courseId}}" >Enroll</a>
+                            </div>
+                            <div *ngIf = "isMyCourse && isStudent">
+                                <a class="btn btn-primary" routerLink="/workplace/+{{item.courseId}}" >Learn</a>
+                            </div>
+                            <div *ngIf = "isMyCourse && isStaff">
+                                <a class="btn btn-primary" routerLink = "/addtopic/+{{item.courseId}}">Add Topic</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                <a class="btn btn-secondary" routerLink="/addclass/+{{item.courseId}}">Add Class</a><br><br>
+                                <a class="btn btn-success" routerLink="/course-detail/+{{item.courseId}}">View Detail</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            </div>
+                        </div>
+                    </div> 
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

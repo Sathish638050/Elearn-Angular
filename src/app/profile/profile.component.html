@@ -1,0 +1,24 @@
+<div class="row justify-content-center" style="color: black;">
+    <div class="card text-center" style="width: 18rem;">
+        <div class="container1">
+            <img src="../../assets/images/{{userDetail.userImage}}" class="card-img-top image" alt="...">   
+            <div class="overlay">
+                <div class="text"><button type="button" class="btn btn-primary" (click)="OpenDialog()">Edit</button></div>
+            </div>
+        </div>
+        
+        <div class="card-body">
+            <h2 class="card-title">{{userDetail.firstName}} {{userDetail.lastName}}</h2>
+            <p class="card-text"></p>
+        </div>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">Email : {{userDetail.email}}</li>
+            <li class="list-group-item">Mobile Number : {{userDetail.phone}}</li>
+        </ul>
+        <div class="card-body">
+            <a class="btn btn-primary" (click) = "OpenEditDialog()">Edit</a>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <a class="btn btn-secondary" (click)="Refresh()">Refresh</a>
+        </div>
+    </div>
+</div>

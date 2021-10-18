@@ -1,0 +1,16 @@
+<div class="container">
+    <h1 style="color: black;">Messages & Feedback</h1>
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        <div *ngFor="let item of contact">
+            <div class="col">
+                <div class="card" style="width:18rem">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">Name : {{item.name}}</li>
+                        <li class="list-group-item">Email : {{item.email}}</li>
+                        <li class="list-group-item">Message&Feedback : {{item.message}}</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

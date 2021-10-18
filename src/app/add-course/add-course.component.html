@@ -1,0 +1,51 @@
+<mat-card style="width: 510px;">
+    <mat-card-title class="info-color white-text text-center py-4">
+        <h2>
+            <strong>Add Course</strong>
+        </h2>
+    </mat-card-title>
+    <mat-card-content class="px-lg-5 pt-0" style="color: black;">
+        <form class="example-form text-center" style="color: #757575;" #AddCourseForm="ngForm" (ngSubmit)= "AddCourse(AddCourseForm.value)">
+            <div class="row">
+                <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label for="courseName">Course Name</mat-label>
+                    <input type="text" matInput placeholder="CourseName" [(ngModel)] = "course.courseName" name="CourseName" autocomplete="off" #CourseName='ngModel' required style="color: white;">
+                </mat-form-field>
+                <div *ngIf="CourseName.invalid && (CourseName.dirty || CourseName.touched)" class="error" style="padding-bottom: 15px;">
+                    <div *ngIf = "CourseName.errors?.required" style="color: red;">Course Name is Required</div>
+                </div>
+            </div>
+            <div class="row">
+                <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label for="courseName">Course Description</mat-label>
+                    <input type="text" matInput placeholder="CourseDescription" [(ngModel)] = "course.description" name="CourseDescription" autocomplete="off" #CourseDescription='ngModel' required style="color: white;" >
+                </mat-form-field>
+                <div *ngIf="CourseDescription.invalid && (CourseDescription.dirty || CourseDescription.touched)" class="error" style="padding-bottom: 15px;">
+                    <div *ngIf = "CourseDescription.errors?.required" style="color: red;">Course Name is Required</div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group">
+                    <label for="picture" style="color: white; padding-right: 330px;">Picture</label>
+                    <input type="file" class="form-control" [(ngModel)]="course.picture" name="CoursePicture" #CoursePicture="ngModel" required (change)="onselectFile($event)">
+                </div>
+                <div *ngIf="CoursePicture.invalid && (CoursePicture.dirty || CoursePicture.touched)" class="error" style="padding-bottom: 15px;">
+                    <div *ngIf = "CoursePicture.errors?.required" style="color: red;">Course Name is Required</div>
+                </div>
+            </div><br>
+            <div class="row">
+                <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label for="amount">Amount</mat-label>
+                    <input type="text" matInput placeholder="Amount" [(ngModel)] = "course.amount" name="Amount" autocomplete="off" #Amount='ngModel' required  style="color: white;">
+                </mat-form-field>
+                <div *ngIf="Amount.invalid && (Amount.dirty || Amount.touched)" class="error" style="padding-bottom: 15px;">
+                    <div *ngIf = "Amount.errors?.required" style="color: red;">Amount is Required</div>
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <button type="submit" class="btn btn-secondary" [disabled] = "!AddCourseForm.form.valid">Add Course</button>
+            </div>        
+        </form><br>
+    </mat-card-content>
+</mat-card>

@@ -1,0 +1,88 @@
+<mat-card>
+    <mat-card-title class="info-color white-text text-center py-4">
+        <h2>
+            <strong>Registration</strong>
+        </h2>
+    </mat-card-title>
+    <mat-card-content class="px-lg-5 pt-0" style="color: black;">
+        <form class="example-form text-center" style="color: #757575;" #RegisterForm="ngForm" (ngSubmit)= "Register(RegisterForm.value)">
+            <div class="row">
+                <div class="col-6">
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label for="FirstName">First Name</mat-label>
+                        <input type="text" matInput placeholder="FirstName" [(ngModel)] = "user.firstName" name="FirstName" autocomplete="off" #FirstName='ngModel' required >
+                      </mat-form-field>
+                      <div *ngIf="FirstName.invalid && (FirstName.dirty || FirstName.touched)" class="error" style="padding-bottom: 15px;">
+                          <div *ngIf = "FirstName.errors?.required" style="color: red;">FirstName is Required</div>
+                      </div>
+                </div>
+                <div class="col-6">
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label for="LastName">Last Name</mat-label>
+                        <input type="text" matInput placeholder="LastName" [(ngModel)] = "user.lastName" name="LastName" autocomplete="off" #LastName='ngModel' required>
+                      </mat-form-field>
+                      <div *ngIf="LastName.invalid && (LastName.dirty || LastName.touched)" class="error" style="padding-bottom: 15px;">
+                        <div *ngIf = "LastName.errors?.required" style="color: red;">Last Name is Required</div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-6">
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label for="Email">Email</mat-label>
+                        <input type="text" matInput placeholder="Email" [(ngModel)] = "user.email" name="Email" autocomplete="off" #Email='ngModel' required pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$">
+                      </mat-form-field>
+                      <div *ngIf="Email.invalid && (Email.dirty || Email.touched)" class="error" style="padding-bottom: 15px;">
+                        <div *ngIf = "Email.errors?.required" style="color: red;">Email is Required</div>
+                        <div *ngIf ="Email.errors && Email.errors.pattern">Invalid Email</div>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label for="Phone">Phone</mat-label>
+                        <input type="text" matInput placeholder="Phone" [(ngModel)] = "user.phone" name="Phone" autocomplete="off" #Phone='ngModel' required minlength="10" >
+                      </mat-form-field>
+                      <div *ngIf="Phone.invalid && (Phone.dirty || Phone.touched)" class="error" style="padding-bottom: 15px;">
+                        <div *ngIf = "Phone.errors?.required" style="color: red;">Email is Required</div>
+                        <div *ngIf ="Phone.errors?.minlength">Invalid Phone Number</div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-6">
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label for="Username">Username</mat-label>
+                        <input type="text" matInput placeholder="Username" [(ngModel)] = "user.username" name="Username" autocomplete="off" #Username='ngModel' required (change)="checkUsername($event)" >
+                      </mat-form-field>
+                      <div *ngIf="Username.invalid && (Username.dirty || Username.touched )" class="error" style="padding-bottom: 15px;">
+                        <div *ngIf = "Username.errors?.required" style="color: red;">Username is Required</div>
+                      </div>
+                      <div *ngIf = "userexist !=''" class="error"  style="color: red;">
+                        {{userexist}}
+                      </div>
+                </div>
+                <div class="col-6">
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label for="Password">Password</mat-label>
+                        <input type="password" matInput placeholder="Password" [(ngModel)] = "user.password" name="Password" autocomplete="off" #Password='ngModel' required minlength="6">
+                      </mat-form-field>
+                      <div *ngIf="Password.invalid && (Password.dirty || Password.touched)" class="error" style="padding-bottom: 15px;">
+                        <div *ngIf = "Password.errors?.required" style="color: red;">Password is Required</div>
+                        <div *ngIf ="Password.errors?.minlength">Password must be 6 Characters</div>
+                      </div>
+                </div>
+            </div>
+            <div class="row" style="display: none;">
+                <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label for="Role">Role</mat-label>
+                    <input type="text" matInput placeholder="Role" [(ngModel)] = "user.role" name="Role" autocomplete="off" value="Student" >
+                </mat-form-field>
+            </div>
+            <br>
+            <div class="row">
+                <button type="submit" class="btn btn-secondary" [disabled] = "!RegisterForm.form.valid">Register</button>
+            </div>
+        </form><br>
+        <p style="color: white;">Already a member? <a routerLink="/login">Login</a></p>
+    </mat-card-content>
+</mat-card>

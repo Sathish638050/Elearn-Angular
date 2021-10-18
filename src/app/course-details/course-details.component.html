@@ -1,0 +1,28 @@
+<div *ngIf="already">
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        <strong>You Already Enroll This Course</strong>
+      </div>
+</div>
+<div class="card" style="width: 18rem; color: black;">
+    <img src="../../assets/images/{{CourseDetail.picture}}">
+    <div class="card-body">
+        <h2 class="card-title">
+            {{CourseDetail.courseName}}
+        </h2>
+        <p class="card-text">{{CourseDetail.description}}</p>
+    </div>
+    <ul class="list-group list-group-flush">
+        <li class="list-group-item">{{CourseDetail.amount}}</li>
+    </ul>
+    <div class="card-body">
+        
+        <div *ngIf="already">
+            <a class="btn btn-secondary" [routerLink]="['/courselist']" routerLinkActive="router-link-active" >Back</a>&nbsp;&nbsp;
+            <a *ngIf = "isStudent" class="btn btn-primary" routerLink="/course-detail/{{CourseDetail.courseId}}">Payment</a>
+        </div>
+        <div *ngIf = "!already">
+            <a class="btn btn-secondary" [routerLink]="['/courselist']" routerLinkActive="router-link-active" >Back</a>&nbsp;&nbsp;
+            <a *ngIf = "isStudent" class="btn btn-primary" (click)=PaymentUser()>Payment</a>
+        </div>
+    </div>
+</div>
