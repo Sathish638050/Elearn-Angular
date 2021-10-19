@@ -11,7 +11,7 @@ export class CourseService{
 
     getAllCourse():Observable<Course[]>
     {
-        return this.http.get<Course[]>("https://localhost:44359/api/Student/GetAllCourse",{
+        return this.http.get<Course[]>("https://studentapi1.azurewebsites.net/api/Student/GetAllCourse",{
             headers:new HttpHeaders({
                 'Content-Type':'application/json;charset=UTF-8',
                 'Access-Control-Allow-Origin':'*',
@@ -20,7 +20,7 @@ export class CourseService{
         });
     }
     getCourseById(id : number):Observable<Course>{
-        return this.http.get<Course>("https://localhost:44359/api/Student/GetCourseById?id="+id,{
+        return this.http.get<Course>("https://studentapi1.azurewebsites.net/api/Student/GetCourseById?id="+id,{
             headers:new HttpHeaders({
                 'Content-Type':'application/json;charset=UTF-8',
                 'Access-Control-Allow-Origin':'*',
@@ -29,7 +29,7 @@ export class CourseService{
         })
     }
     getEnrolledCourse(id : number):Observable<Course[]>{
-        return this.http.get<Course[]>("https://localhost:44359/api/Student/GetEnrollCourses?myid="+id,{
+        return this.http.get<Course[]>("https://studentapi1.azurewebsites.net/api/Student/GetEnrollCourses?myid="+id,{
             headers:new HttpHeaders({
                 'Content-Type':'application/json;charset=UTF-8',
                 'Access-Control-Allow-Origin':'*',
@@ -38,7 +38,7 @@ export class CourseService{
         })
     }
     getAddedCourse(id : number):Observable<Course[]>{
-        return this.http.get<Course[]>("https://localhost:44303/api/Staff/GetCourseByUser?id="+id,{
+        return this.http.get<Course[]>("https://staffcontrollapi.azurewebsites.net/api/Staff/GetCourseByUser?id="+id,{
             headers:new HttpHeaders({
                 'Content-Type':'application/json;charset=UTF-8',
                 'Access-Control-Allow-Origin':'*',
