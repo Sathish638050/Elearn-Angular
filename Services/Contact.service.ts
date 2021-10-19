@@ -10,7 +10,7 @@ export class ContactService{
     constructor(private http:HttpClient){}
 
     PostMessage(message : Contact):Observable<any>{
-        return this.http.post<Contact>("https://localhost:44370/api/Contact/Contact", message,{
+        return this.http.post<Contact>("https://loginauthapi1.azurewebsites.net/api/Contact/Contact", message,{
             headers:new HttpHeaders({
                 'Content-Type':'application/json;charset=UTF-8',
                 'Access-Control-Allow-Origin':'*',
@@ -20,7 +20,7 @@ export class ContactService{
     }
 
     GetMessages():Observable<Contact[]>{
-        return this.http.get<Contact[]>("https://localhost:44370/api/Contact/GetContactDetails",{
+        return this.http.get<Contact[]>("https://loginauthapi1.azurewebsites.net/api/Contact/GetContactDetails",{
             headers:new HttpHeaders({
                 'Content-Type':'application/json;charset=UTF-8',
                 'Access-Control-Allow-Origin':'*',
