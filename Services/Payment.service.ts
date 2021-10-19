@@ -11,7 +11,7 @@ export class PaymentServices{
 
     MakePayment(user:Payment):Observable<any>
     {
-        return this.http.post<any>("https://localhost:44359/api/Student/MakePayment",user,{
+        return this.http.post<any>("https://studentapi1.azurewebsites.net/api/Student/MakePayment",user,{
             headers:new HttpHeaders({
                 'Content-Type':'application/json;charset=UTF-8',
                 'Access-Control-Allow-Origin':'*',
