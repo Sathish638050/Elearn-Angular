@@ -7,7 +7,7 @@ import { Observable, observable } from "rxjs";
     providedIn: 'root'
 })
 export class LoginService{
-    req:string="https://localhost:44370/api/Auth";
+    req:string="https://loginauthapi1.azurewebsites.net/api/Auth";
     constructor(private http:HttpClient){}
 
     Login(login:Login):Observable<any>
@@ -23,7 +23,7 @@ export class LoginService{
     )}
 
     GetDetail(login : Login):Observable<any>{
-        return this.http.post("https://localhost:44370/api/Auth/UserDetail",login,{
+        return this.http.post("https://loginauthapi1.azurewebsites.net/api/Auth/UserDetail",login,{
             headers:new HttpHeaders({
                 'Content-Type':'application/json;charset=UTF-8',
                 'Access-Control-Allow-Origin':'*',
