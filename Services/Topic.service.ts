@@ -10,7 +10,7 @@ export class TopicService{
     constructor(private http:HttpClient){}
 
     getTopicByCourse(id : number):Observable<Topic[]>{
-        return this.http.get<Topic[]>("https://localhost:44359/api/Student/Topics?cid="+id,{
+        return this.http.get<Topic[]>("https://studentapi1.azurewebsites.net/api/Student/Topics?cid="+id,{
             headers:new HttpHeaders({
                 'Content-Type':'application/json;charset=UTF-8',
                 'Access-Control-Allow-Origin':'*',
@@ -20,7 +20,7 @@ export class TopicService{
     }
 
     AddTopic(topic : Topic):Observable<any>{
-        return this.http.post<any>("https://localhost:44303/api/Staff/AddTopic",topic,{
+        return this.http.post<any>("https://staffcontrollapi.azurewebsites.net/api/Staff/AddTopic",topic,{
             headers:new HttpHeaders({
                 'Content-Type':'application/json;charset=UTF-8',
                 'Access-Control-Allow-Origin':'*',
