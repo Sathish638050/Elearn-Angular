@@ -11,7 +11,7 @@ export class CourseEnrollService{
     constructor(private http:HttpClient){}
     
     CourseEnroll(user:CourseEnroll):Observable<any>{
-        return this.http.post<any>("https://localhost:44359/api/Student/CourseEnroll",user,{
+        return this.http.post<any>("https://studentapi1.azurewebsites.net/api/Student/CourseEnroll",user,{
             headers:new HttpHeaders({
                 'Content-Type':'application/json;charset=UTF-8',
                 'Access-Control-Allow-Origin':'*',
