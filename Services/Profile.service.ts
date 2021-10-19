@@ -11,7 +11,7 @@ export class ProfileService{
     constructor(private http:HttpClient){}
 
     getUserProfile(id : number):Observable<UserAccount>{
-        return this.http.get<UserAccount>("https://localhost:44359/api/Student/UserProfile?userid="+id,{
+        return this.http.get<UserAccount>("https://studentapi1.azurewebsites.net/api/Student/UserProfile?userid="+id,{
             headers:new HttpHeaders({
                 'Content-Type':'application/json;charset=UTF-8',
                 'Access-Control-Allow-Origin':'*',
@@ -21,7 +21,7 @@ export class ProfileService{
     }
 
     UpdateImg(id:number,user:UserAccount):Observable<any>{
-        return this.http.put<UserAccount>("https://localhost:44359/api/Student/UpdateUserPic?id="+id,user,{
+        return this.http.put<UserAccount>("https://studentapi1.azurewebsites.net/api/Student/UpdateUserPic?id="+id,user,{
             headers:new HttpHeaders(
                 {
                   'Content-Type':'application/json;charset=UTF-8',
@@ -32,7 +32,7 @@ export class ProfileService{
     }
 
     UpdateDetails(id:number,user : UserAccount):Observable<any>{
-        return this.http.put<UserAccount>("https://localhost:44359/api/Student/UpdateUser?id="+id,user,{
+        return this.http.put<UserAccount>("https://studentapi1.azurewebsites.net/api/Student/UpdateUser?id="+id,user,{
             headers:new HttpHeaders(
                 {
                   'Content-Type':'application/json;charset=UTF-8',
