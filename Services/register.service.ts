@@ -8,7 +8,7 @@ import { Observable, observable } from "rxjs";
     providedIn: 'root'
 })
 export class RegisterService{
-    req:string="https://localhost:44370/api/Auth/Register";
+    req:string="https://loginauthapi1.azurewebsites.net/api/Auth/Register";
     constructor(private http:HttpClient){}
 
     Register(user:UserAccount):Observable<any>
@@ -24,7 +24,7 @@ export class RegisterService{
 
     checkUsername(name:string):Observable<any>
     {
-        return this.http.get<UserAccount>("https://localhost:44370/api/Auth/"+name,{
+        return this.http.get<UserAccount>("https://loginauthapi1.azurewebsites.net/api/Auth/"+name,{
             headers:new HttpHeaders({
                 'Content-Type':'application/json;charset=UTF-8',
                 'Access-Control-Allow-Origin':'*',
