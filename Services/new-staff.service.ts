@@ -13,7 +13,7 @@ export class NewStaffService{
 
     checkUsername1(name:string):Observable<any>
     {
-        return this.http.get<UserAccount>("https://localhost:44370/api/Auth/"+name,{
+        return this.http.get<UserAccount>("https://loginauthapi1.azurewebsites.net/api/Auth/"+name,{
             headers:new HttpHeaders({
                 'Content-Type':'application/json;charset=UTF-8',
                 'Access-Control-Allow-Origin':'*',
@@ -23,7 +23,7 @@ export class NewStaffService{
     }
     checkUsername2(name:string):Observable<any>
     {
-        return this.http.get<NewStaff>("https://localhost:44370/api/Auth/GetDetailByReqName?name="+name,{
+        return this.http.get<NewStaff>("https://loginauthapi1.azurewebsites.net/api/Auth/GetDetailByReqName?name="+name,{
             headers:new HttpHeaders({
                 'Content-Type':'application/json;charset=UTF-8',
                 'Access-Control-Allow-Origin':'*',
@@ -33,7 +33,7 @@ export class NewStaffService{
     }
     AddReq(user:NewStaff):Observable<any>
     {
-    return this.http.post<any>("https://localhost:44370/api/AddNewStaff/AddRequestStaff",user,
+    return this.http.post<any>("https://loginauthapi1.azurewebsites.net/api/AddNewStaff/AddRequestStaff",user,
       {
         headers: new HttpHeaders({
           'Content-Type':'application/json;charset=UTF-8',
